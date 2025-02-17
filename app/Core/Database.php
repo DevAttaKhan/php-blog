@@ -1,7 +1,7 @@
 <?php
 
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Core;
 
@@ -16,7 +16,9 @@ class Database
 
     function __construct($config, $root, $password)
     {
-        $dsn = "mysql:" . http_build_query($config);
+        $dsn = "mysql:" . http_build_query($config, '', ';');
+
+
 
         $this->connection = new PDO($dsn, $root, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
     }
@@ -33,7 +35,7 @@ class Database
 
     public function findAll()
     {
-        return  $this->statement->fetchAll();
+        return $this->statement->fetchAll();
     }
 
     public function findOne()
