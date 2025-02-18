@@ -1,7 +1,7 @@
 <?php
 
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Core;
 
@@ -14,13 +14,13 @@ class Database
     public PDO $connection;
     public ?PDOStatement $statement;
 
-    function __construct($config, $root, $password)
+    function __construct($config, $user, $password)
     {
-        $dsn = "mysql:" . http_build_query($config, '', ';');
+        $dsn = "mysql:" . http_build_query($config, arg_separator: ';');
 
+        dd($dsn);
 
-
-        $this->connection = new PDO($dsn, $root, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+        $this->connection = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
     }
 
 

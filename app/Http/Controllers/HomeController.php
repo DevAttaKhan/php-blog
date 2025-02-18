@@ -8,14 +8,12 @@ use Http\Services\Test;
 class HomeController
 {
 
-
-
-    public function __construct(private Test $test, private Database $db) { }
+    public function __construct(private Test $test, private Database $db) {}
 
     public function index()
     {
 
-        $result = $this->db->query('SELECT * FROM customers')->findAll();
+        $result =  $this->db->query("Select * from users ")->findAll();
 
         dd($result);
     }
