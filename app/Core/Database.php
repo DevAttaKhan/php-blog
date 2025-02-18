@@ -16,11 +16,10 @@ class Database
 
     function __construct($config, $user, $password)
     {
-        $dsn = "mysql:" . http_build_query($config, arg_separator: ';');
+        // $dsn = "mysql:" . http_build_query($config, arg_separator: ';');
+        $dsn =  'sqlite:' . base_path('app.db');
 
-        dd($dsn);
-
-        $this->connection = new PDO($dsn, $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+        $this->connection = new PDO($dsn, options: [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
     }
 
 

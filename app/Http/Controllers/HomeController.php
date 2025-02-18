@@ -14,7 +14,6 @@ class HomeController
     {
 
         $result =  $this->db->query("Select * from users ")->findAll();
-
         dd($result);
     }
 

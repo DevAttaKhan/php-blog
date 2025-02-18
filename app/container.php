@@ -26,7 +26,7 @@ $containerBuilder->addDefinitions([
 
         if ($instance === null) {
             $config = $container->get('databaseConfig');
-            return new Database($config, 'root', 'amdin');
+            return new Database($config, 'root', 'root');
         }
 
         return $instance;
