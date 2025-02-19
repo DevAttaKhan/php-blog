@@ -3,18 +3,21 @@
 namespace Http\Controllers;
 
 use Core\Database;
-use Http\Services\Test;
+
 
 class HomeController
 {
 
-    public function __construct(private Test $test, private Database $db) {}
+    public function __construct(private Database $db) {}
 
     public function index()
     {
 
+
+
         $result =  $this->db->query("Select * from users ")->findAll();
-        dd($result);
+
+        echo twig()->render('index.twig', ['greet' => 'Hell wrold']);
     }
 
     public function about()

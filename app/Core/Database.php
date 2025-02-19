@@ -31,6 +31,12 @@ class Database
         return $this;
     }
 
+    public function queryMutation(string $query, array $params = [])
+    {
+        $this->statement = $this->connection->prepare($query);
+        return  $this->statement->execute($params);
+    }
+
 
     public function findAll()
     {

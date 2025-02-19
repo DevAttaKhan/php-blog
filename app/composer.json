@@ -13,6 +13,8 @@
   ],
   "require": {
     "php-di/php-di": "^7.0",
-    "psr/container": "^2.0"
+    "psr/container": "^2.0",
+    "twig/twig": "^3.0",
+    "vlucas/valitron": "^1.4"
   }
 }

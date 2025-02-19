@@ -1,12 +1,18 @@
 <?php
 
 use Core\Router;
-use Http\Services\Test;
+use Core\Session;
+use Core\ValidationException;
 
 const BASE_PATH =  __DIR__ . '/../';
-require BASE_PATH . 'Core/functions.php';
+
+session_start();
 
 require BASE_PATH . 'vendor/autoload.php';
+require BASE_PATH . 'Core/functions.php';
+
+
+
 $container = require base_path('container.php');
 
 $router = new  Router($container);
@@ -18,4 +24,16 @@ $uri = explode('?', $URI)[0];
 
 
 
-$router->route($uri, $method);
+try {
+
+    $router->route($uri, $method);
+} catch (ValidationException $e) {
+
+    Session::flash('errors', $e->errors);
+    Session::flash('old', $e->old);
+
+    return redirect($router->previousUrl());
+}
+
+
+Session::unflash();

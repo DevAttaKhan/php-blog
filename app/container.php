@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 use DI\ContainerBuilder;
 use Http\Controllers\HomeController;
-use Http\Services\Test;
 use Psr\Container\ContainerInterface;
 use Core\Database;
-
+use Core\Session;
+use Http\Controllers\AuthController;
+use Http\Services\AuthService;
 
 use function DI\autowire;
 
@@ -32,7 +33,9 @@ $containerBuilder->addDefinitions([
         return $instance;
     },
     HomeController::class => autowire(),
-    Test::class => autowire(),
+    AuthController::class => autowire(),
+    AuthService::class => autowire(),
+    Session::class => autowire(),
 ]);
 
 

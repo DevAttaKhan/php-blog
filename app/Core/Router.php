@@ -50,6 +50,12 @@ class Router
     }
 
 
+    public function previousUrl()
+    {
+        return $_SERVER['HTTP_REFERER'];
+    }
+
+
     public function route($uri, $method)
     {
 

@@ -1,5 +1,7 @@
 <?php
 
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 function dd($value)
 {
@@ -38,3 +40,22 @@ function abort($code = 404)
 
     die();
 }
+
+
+function twig(): Environment
+{
+    static $twig = null;
+
+    if ($twig === null) {
+        $loader = new  FilesystemLoader(base_path('views'));
+        $twig = new  Environment($loader, [
+            'cache' => base_path('cache'),
+            'debug' => true,
+        ]);
+    }
+
+    return $twig;
+}
+
+
+const greet = 'Hello word';
